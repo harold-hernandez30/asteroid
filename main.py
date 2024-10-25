@@ -48,6 +48,7 @@ def main():
                   return
              for shot in shots:
                 if sprite.collision(shot):
+                     shot.kill()
                      sprite.kill()
              
         for sprite in shots:
