@@ -3,6 +3,8 @@
 # throughout this file
 import pygame
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 from constants import *
 
 def main():
@@ -12,9 +14,13 @@ def main():
 
     drawable = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     Player.containers = (drawable, updatable)
+    Asteroid.containers = (asteroids, drawable, updatable)
+    AsteroidField.containers = (updatable)
 
     Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+    AsteroidField()
     black = 0, 0, 0
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -32,6 +38,7 @@ def main():
         
         for sprite in updatable:
             sprite.update(dt)
+
             
         pygame.display.flip()
              
